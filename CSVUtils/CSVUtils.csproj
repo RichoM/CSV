@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Streams, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RichoM.Streams.1.0.0\lib\net40\Streams.dll</HintPath>
+    <Reference Include="RichoM.Streams, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RichoM.Streams.1.0.3-CI00012\lib\net452\RichoM.Streams.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
