@@ -54,7 +54,7 @@ namespace CSVTest
                 new string[] { "ghi", "jkl" },
                 new string[] { "mnñ", "opq" }
             };
-            AssertEqualCSV(expected, rows);
+            CSVAssert.AreEqual(expected, rows);
         }
 
         [TestMethod]
@@ -68,7 +68,7 @@ namespace CSVTest
                 new string[] { "ghi,jkl" },
                 new string[] { "mnñ,opq" }
             };
-            AssertEqualCSV(expected, rows);
+            CSVAssert.AreEqual(expected, rows);
         }
 
         [TestMethod]
@@ -82,7 +82,7 @@ namespace CSVTest
                 new string[] { "kl", "gh\r\nij" },
                 new string[] { "mn,ño", "\r\n" }
             };
-            AssertEqualCSV(expected, rows);
+            CSVAssert.AreEqual(expected, rows);
         }
 
         [TestMethod]
@@ -95,7 +95,7 @@ namespace CSVTest
                 new string[] { "a", "b", "c" },
                 new string[] { "d", "e", "f" },
             };
-            AssertEqualCSV(expected, rows);            
+            CSVAssert.AreEqual(expected, rows);            
         }
 
         [TestMethod]
@@ -108,7 +108,7 @@ namespace CSVTest
                 new string[] { @"""a""", "b", "c" },
                 new string[] { "d", @"""e""", "f" }
             };
-            AssertEqualCSV(expected, rows);
+            CSVAssert.AreEqual(expected, rows);
         }
 
         [TestMethod]
@@ -140,18 +140,6 @@ namespace CSVTest
                 DateTime dt1 = asDateTime(rows[i - 1][2], rows[i - 1][3]);
                 DateTime dt2 = asDateTime(rows[i][2], rows[i][3]);
                 Assert.IsTrue(dt2 >= dt1);
-            }
-        }
-
-        private void AssertEqualCSV(string[][] expected, string[][] actual)
-        {
-            for (int i = 0; i < actual.Length; i++)
-            {
-                Assert.AreEqual(expected[i].Length, actual[i].Length);
-                for (int j = 0; j < actual[i].Length; j++)
-                {
-                    Assert.AreEqual(expected[i][j], actual[i][j]);
-                }
             }
         }
     }

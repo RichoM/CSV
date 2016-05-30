@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="CSV.cs" />
     <Compile Include="CSVReader.cs" />
+    <Compile Include="CSVWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

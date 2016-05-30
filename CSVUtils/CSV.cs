@@ -31,5 +31,40 @@ namespace CSVUtils
         {
             return ReadFile(new FileInfo(fileName), separator);
         }
+
+        public static string WriteString(
+            IEnumerable<IEnumerable<string>> rows,
+            char separator = ',')
+        {
+            string result = null;
+            StringWriter writer = null;
+            using (CSVWriter csv = new CSVWriter(writer = new StringWriter(), separator))
+            {
+                csv.WriteRows(rows);
+                result = writer.ToString();
+            }
+            return result;
+        }
+
+        public static void WriteFile(
+            IEnumerable<IEnumerable<string>> rows, 
+            FileInfo file, 
+            char separator = ',',
+            bool overwrite = true)
+        {
+            WriteFile(rows, file.FullName, separator, overwrite);
+        }
+
+        public static void WriteFile(
+            IEnumerable<IEnumerable<string>> rows,
+            string fileName,
+            char separator = ',',
+            bool overwrite = true)
+        {
+            using (CSVWriter csv = new CSVWriter(new StreamWriter(fileName, !overwrite)))
+            {
+                csv.WriteRows(rows);
+            }
+        }
     }
 }
