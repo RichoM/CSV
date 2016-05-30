@@ -19,7 +19,7 @@ namespace CSVTest
                 new string[] { "third", "fourth" }
             };
             string text = CSV.WriteString(expected);
-            string[][] actual = CSV.ReadString(text).ToArray();
+            string[][] actual = CSV.ReadString(text).ToJaggedArray();
             CSVAssert.AreEqual(expected, actual);
         }
 
@@ -32,7 +32,7 @@ namespace CSVTest
                 new string[] { "third \"fourth\"", "fourth, fifth" }
             };
             string text = CSV.WriteString(expected);
-            string[][] actual = CSV.ReadString(text).ToArray();
+            string[][] actual = CSV.ReadString(text).ToJaggedArray();
             CSVAssert.AreEqual(expected, actual);
         }
 
@@ -45,7 +45,7 @@ namespace CSVTest
                 new string[] { "third \"fourth\"", "fourth| fifth" }
             };
             string text = CSV.WriteString(expected, '|');
-            string[][] actual = CSV.ReadString(text, '|').ToArray();
+            string[][] actual = CSV.ReadString(text, '|').ToJaggedArray();
             CSVAssert.AreEqual(expected, actual);
         }
 
@@ -61,7 +61,7 @@ namespace CSVTest
                 new string[] { "third \"fourth\"", "fourth, fifth", "I don't know\t\t\r\n\n\n\r\n" }
                 };
                 CSV.WriteFile(expected, fileName);
-                string[][] actual = CSV.ReadFile(fileName).ToArray();
+                string[][] actual = CSV.ReadFile(fileName).ToJaggedArray();
                 CSVAssert.AreEqual(expected, actual);
             }
             finally

@@ -36,7 +36,7 @@ namespace CSVTest
         public void ParserReadsSingleRowCorrectly()
         {
             string s = "abc,def,ghi";
-            string[] row = CSV.ReadString(s).ElementAt(0);
+            string[] row = CSV.ReadString(s).ElementAt(0).ToArray();
             Assert.AreEqual(3, row.Length);
             Assert.AreEqual("abc", row[0]);
             Assert.AreEqual("def", row[1]);
@@ -47,7 +47,7 @@ namespace CSVTest
         public void ParserReadsSeveralRowsCorrectly()
         {
             string s = "abc,def\nghi,jkl\nmnñ,opq";
-            string[][] rows = CSV.ReadString(s).ToArray();
+            string[][] rows = CSV.ReadString(s).ToJaggedArray();
             string[][] expected = new string[][]
             {
                 new string[] { "abc", "def" },
@@ -61,7 +61,7 @@ namespace CSVTest
         public void ParserReadsEnclosedRowsCorrectly()
         {
             string s = "\"abc,def\"\n\"ghi,jkl\"\n\"mnñ,opq\"";
-            string[][] rows = CSV.ReadString(s).ToArray();
+            string[][] rows = CSV.ReadString(s).ToJaggedArray();
             string[][] expected = new string[][]
             {
                 new string[] { "abc,def" },
@@ -75,7 +75,7 @@ namespace CSVTest
         public void EnclosedRowsCanContainNewLines()
         {
             string s = "\"ab\ncd\",ef\nkl,\"gh\r\nij\"\n\"mn,ño\",\"\r\n\"";
-            string[][] rows = CSV.ReadString(s).ToArray();
+            string[][] rows = CSV.ReadString(s).ToJaggedArray();
             string[][] expected = new string[][]
             {
                 new string[] { "ab\ncd", "ef" },
@@ -89,7 +89,7 @@ namespace CSVTest
         public void ParserAcceptsAnyCharAsDelimiter()
         {
             string s = "a|b|c\nd|e|f";
-            string[][] rows = CSV.ReadString(s, '|').ToArray();
+            string[][] rows = CSV.ReadString(s, '|').ToJaggedArray();
             string[][] expected = new string[][]
             {
                 new string[] { "a", "b", "c" },
@@ -102,7 +102,7 @@ namespace CSVTest
         public void EnclosedCellsCanHaveEscapedQuotationMarks()
         {
             string s = "\"\"\"a\"\"\",b,c\nd,\"\"\"e\"\"\",f";
-            string[][] rows = CSV.ReadString(s, ',').ToArray();
+            string[][] rows = CSV.ReadString(s, ',').ToJaggedArray();
             string[][] expected = new string[][]
             {
                 new string[] { @"""a""", "b", "c" },
@@ -114,7 +114,7 @@ namespace CSVTest
         [TestMethod]
         public void ParserCanAlsoReadFiles()
         {
-            string[][] rows = CSV.ReadFile("tweets.csv").ToArray();
+            string[][] rows = CSV.ReadFile("tweets.csv").ToJaggedArray();
             Assert.AreEqual(4336, rows.Length); // Same # of rows
             Assert.IsTrue(rows.All(row => row.Length == 14)); // Same # of columns
             Assert.AreEqual("idTweets", rows[0][0]); // First cell is correct

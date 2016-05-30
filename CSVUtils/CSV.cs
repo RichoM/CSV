@@ -11,7 +11,7 @@ namespace CSVUtils
 {
     public class CSV
     {
-        public static IEnumerable<string[]> ReadString(string str, char separator = ',')
+        public static IEnumerable<IEnumerable<string>> ReadString(string str, char separator = ',')
         {
             using (CSVReader csv = new CSVReader(new TextStream(str), separator))
             {
@@ -19,7 +19,7 @@ namespace CSVUtils
             }
         }
 
-        public static IEnumerable<string[]> ReadFile(FileInfo file, char separator = ',')
+        public static IEnumerable<IEnumerable<string>> ReadFile(FileInfo file, char separator = ',')
         {
             using (CSVReader csv = new CSVReader(new TextStream(file.OpenText()), separator))
             {
@@ -27,7 +27,7 @@ namespace CSVUtils
             }
         }
 
-        public static IEnumerable<string[]> ReadFile(string fileName, char separator = ',')
+        public static IEnumerable<IEnumerable<string>> ReadFile(string fileName, char separator = ',')
         {
             return ReadFile(new FileInfo(fileName), separator);
         }
