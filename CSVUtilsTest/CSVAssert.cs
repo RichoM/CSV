@@ -5,7 +5,7 @@ namespace CSVTest
 {
     internal class CSVAssert
     {
-        public static void AreEqual(string[][] expected, string[][] actual)
+        public static void AreEqual<T>(T[][] expected, T[][] actual)
         {
             Assert.AreEqual(expected.Length, actual.Length);
             for (int i = 0; i < expected.Length; i++)
