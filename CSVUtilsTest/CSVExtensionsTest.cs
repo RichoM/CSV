@@ -25,5 +25,22 @@ namespace CSVTest
             int[][] actual = original.ToJaggedArray();
             CSVAssert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void ToMultidimensionalArrayTest()
+        {
+            int[][] original = new int[][]
+            {
+                new int[] { 1, 2, 3 },
+                new int[] { 4, 5, 6 }
+            };
+            int[,] expected = new int[2, 3]
+            {
+                { 1, 2, 3 },
+                { 4, 5, 6 }
+            };
+            int[,] actual = original.ToMultidimensionalArray();
+            CSVAssert.AreEqual(expected, actual);
+        }
     }
 }
