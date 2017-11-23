@@ -61,7 +61,7 @@ namespace CSVUtils
             char separator = ',',
             bool overwrite = true)
         {
-            using (CSVWriter csv = new CSVWriter(new StreamWriter(fileName, !overwrite)))
+            using (CSVWriter csv = new CSVWriter(new StreamWriter(fileName, !overwrite), separator))
             {
                 csv.WriteRows(rows);
             }

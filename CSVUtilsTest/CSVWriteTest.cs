@@ -60,8 +60,8 @@ namespace CSVTest
                 new string[] { "first\r\nsecond", "second\nthird", "something else" },
                 new string[] { "third \"fourth\"", "fourth, fifth", "I don't know\t\t\r\n\n\n\r\n" }
                 };
-                CSV.WriteFile(expected, fileName);
-                string[][] actual = CSV.ReadFile(fileName).ToJaggedArray();
+                CSV.WriteFile(expected, fileName, ';');
+                string[][] actual = CSV.ReadFile(fileName, ';').ToJaggedArray();
                 CSVAssert.AreEqual(expected, actual);
             }
             finally
