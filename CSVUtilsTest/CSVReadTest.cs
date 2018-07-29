@@ -5,6 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using CSVUtils;
 using System.Globalization;
+using System.Text;
+using System.IO;
 
 namespace CSVTest
 {

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CSVUtils</RootNamespace>
     <AssemblyName>RichoM.CSV</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RichoM.Streams, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RichoM.Streams.1.0.3-CI00012\lib\net452\RichoM.Streams.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="RichoM.Streams, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RichoM.Streams.1.0.3-CI00026\lib\net40\RichoM.Streams.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
